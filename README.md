@@ -1,4 +1,4 @@
-# 🚀 NeuroNosh v16.1 | The Future of Dining
+# 🚀 NeuroNosh - The Future of Dining
 
 ![Project Status](https://img.shields.io/badge/Status-Active-brightgreen)
 ![Version](https://img.shields.io/badge/Version-v16.1-blue)
