@@ -17,7 +17,7 @@
 
 ## 🌟 Introduction
 
-**NeuroNosh** is a cutting-edge, single-file web application that simulates a futuristic food delivery ecosystem. It combines the utility of modern aggregators (like Zomato/Swiggy) with immersive cyber-aesthetics and advanced front-end logic. 
+**NeuroNosh** is a cutting-edge, single-file web application that simulates a futuristic food delivery ecosystem. It combines the utility of modern aggregators with immersive cyber-aesthetics and advanced front-end logic. 
 
 From **real-time map tracking** using Leaflet.js to **voice-activated commands** and **atmospheric weather simulations**, NeuroNosh pushes the boundaries of what a static web page can do without a backend.
 
