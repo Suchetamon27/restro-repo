@@ -166,3 +166,262 @@
         .sidebar { position: fixed; top: 0; right: -400px; width: 360px; height: 100vh; background: var(--sidebar-bg); border-left: 1px solid var(--border); z-index: 900; padding: 20px; transition: 0.4s; display: flex; flex-direction: column; color: var(--text-main); }
         .sidebar.open { right: 0; box-shadow: -10px 0 50px rgba(0,0,0,0.5); }
 
+        .cal-meter-box { margin-bottom: 15px; background: #222; padding: 10px; border-radius: 8px; }
+        .cal-header { display: flex; justify-content: space-between; font-size: 0.8rem; color: #aaa; margin-bottom: 5px; }
+        .cal-bar-bg { width: 100%; height: 6px; background: #444; border-radius: 3px; overflow: hidden; }
+        .cal-bar-fill { height: 100%; background: linear-gradient(90deg, #00d2ff, #00ff88); width: 0%; transition: width 0.5s; }
+        .schedule-box { margin-bottom: 10px; }
+        .schedule-select { width: 100%; padding: 8px; background: var(--bg-panel); border: 1px solid var(--border); color: var(--text-main); border-radius: 6px; }
+        .cart-extras { margin: 15px 0; border-top: 1px dashed var(--border); padding-top: 10px; }
+        .tip-options { display: flex; gap: 10px; margin-top: 5px; }
+        .tip-btn { flex: 1; background: var(--bg-panel); border: 1px solid var(--border); color: var(--text-muted); padding: 5px; border-radius: 5px; cursor: pointer; transition: 0.2s; }
+        .tip-btn:hover, .tip-btn.selected { border-color: var(--primary); color: var(--primary); background: rgba(255,153,51,0.1); }
+        .split-btn { width: 100%; background: #333; color: #fff; border: none; padding: 5px; margin-top: 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; }
+        .group-btn { width: 100%; background: #9900cc; color: #fff; border: none; padding: 8px; margin-top: 5px; border-radius: 5px; cursor: pointer; font-size: 0.9rem; font-weight: bold; }
+        
+        .bill-details { font-size: 0.9rem; color: var(--text-muted); margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 10px; }
+        .bill-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .grand-total { font-size: 1.2rem; color: var(--text-main); font-weight: bold; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 5px; }
+
+        /* --- MODALS --- */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; display: none; justify-content: center; align-items: center; }
+        .modal-overlay.active { display: flex; }
+        .modal-box { background: var(--bg-panel); width: 90%; max-width: 500px; border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: relative; max-height: 80vh; overflow-y: auto; color: var(--text-main); }
+        .close-btn { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 1.2rem; }
+
+        .history-item { background: #222; padding: 10px; border-radius: 8px; margin-bottom: 10px; border-left: 3px solid var(--primary); }
+        .hist-header { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 5px; }
+        .hist-meta { font-size: 0.8rem; color: #aaa; }
+
+        .cust-group { margin-bottom: 15px; }
+        .cust-title { font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: var(--primary); }
+        .cust-option { display: flex; justify-content: space-between; padding: 8px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 5px; cursor: pointer; }
+        .cust-option:hover, .cust-option.selected { border-color: var(--primary); background: rgba(255,153,51,0.1); }
+        .cust-input { margin-right: 10px; accent-color: var(--primary); }
+
+        .addr-card { border: 1px solid var(--border); padding: 15px; border-radius: 8px; margin-bottom: 10px; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+        .addr-card:hover, .addr-card.selected { border-color: var(--primary); background: rgba(255, 153, 51, 0.1); }
+        .addr-icon { background: var(--bg-dark); width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: var(--primary); }
+
+        #delivery-map { width: 100%; height: 300px; border-radius: 8px; margin-bottom: 15px; border: 1px solid var(--border); z-index: 1; }
+        body:not(.light-mode) .leaflet-layer, body:not(.light-mode) .leaflet-control-zoom-in, body:not(.light-mode) .leaflet-control-zoom-out, body:not(.light-mode) .leaflet-control-attribution { filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%); }
+
+        /* --- EXTRAS --- */
+        .spin-fab { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: linear-gradient(45deg, #ff0055, #ff5500); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; font-size: 1.5rem; color: #fff; box-shadow: 0 5px 20px rgba(0,0,0,0.5); animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .wheel-container { width: 300px; height: 300px; border-radius: 50%; position: relative; background: conic-gradient(#ff0055 0deg 60deg, #00d2ff 60deg 120deg, #FF9933 120deg 180deg, #138808 180deg 240deg, #aa00ff 240deg 300deg, #ffcc00 300deg 360deg); border: 5px solid #fff; margin: 0 auto; transition: transform 4s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
+        .wheel-pointer { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 25px solid white; z-index: 10; }
+        .spin-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; color: #000; }
+
+        footer { background: #000; color: #888; padding: 40px 5%; margin-top: 50px; border-top: 1px solid var(--border); font-size: 0.9rem; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; }
+        .footer-col h4 { color: #fff; margin-bottom: 15px; font-family: 'Orbitron', sans-serif; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 8px; }
+        .footer-col ul li a { color: #888; text-decoration: none; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--primary); }
+        .copyright { text-align: center; margin-top: 30px; border-top: 1px solid #222; padding-top: 20px; font-size: 0.8rem; }
+
+        .fab { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; font-size: 1.5rem; color: #000; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
+        .chat-win { position: fixed; bottom: 100px; right: 30px; width: 320px; height: 400px; background: var(--bg-panel); border: 1px solid var(--primary); border-radius: 12px; display: none; flex-direction: column; z-index: 1000; }
+        .chat-win.open { display: flex; }
+
+        .btn-primary { background: var(--primary); color: #000; width: 100%; padding: 12px; border: none; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+        #toast { position: fixed; bottom: 30px; left: 50%; transform: translate(-50%, 100px); background: #222; border: 1px solid var(--primary); padding: 10px 25px; border-radius: 30px; transition: 0.3s; opacity: 0; z-index: 3000; color: #fff; }
+        #toast.show { transform: translate(-50%, 0); opacity: 1; }
+    </style>
+</head>
+<body class="">
+
+    <div id="preloader">
+        <div class="loader-ring"></div>
+        <h2 class="font-cyber" style="margin-top:20px; color:white;">NEURONOSH v16.1</h2>
+    </div>
+
+    <div class="rain-container" id="rain-effect"></div>
+
+    <div class="buzz-ticker"><div class="buzz-track" id="buzz-content"></div></div>
+
+    <div class="flash-banner"><i class="fa-solid fa-bolt"></i> FLASH SALE: 50% OFF ENDS IN <span id="flash-timer" class="timer-box">05:00</span></div>
+
+    <nav class="navbar">
+        <div class="logo font-cyber"><i class="fa-solid fa-infinity"></i> NeuroNosh</div>
+        <div class="nav-actions">
+            <div class="icon-btn" onclick="toggleRain()" title="Toggle Weather/Surge"><i class="fa-solid fa-cloud-showers-heavy" id="rain-icon"></i></div>
+            <div class="icon-btn" onclick="openHistory()" title="Order History"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <div class="icon-btn" onclick="toggleTheme()" title="Switch Theme"><i class="fa-solid fa-circle-half-stroke" id="theme-icon"></i></div>
+            <div class="icon-btn" onclick="toggleNotifs()">
+                <i class="fa-solid fa-bell"></i><span class="badge">2</span>
+                <div class="notif-dropdown" id="notif-box">
+                    <div class="notif-item"><i class="fa-solid fa-tag notif-icon"></i> <div><b>New Offer</b><br>Get 50% off on Pizzas!</div></div>
+                    <div class="notif-item"><i class="fa-solid fa-truck notif-icon"></i> <div><b>Order Update</b><br>Your last order was delivered.</div></div>
+                </div>
+            </div>
+            <div class="icon-btn" onclick="toggleWishlist()"><i class="fa-solid fa-heart"></i><span class="badge" id="wish-count">0</span></div>
+            <div class="icon-btn" onclick="toggleCart()"><i class="fa-solid fa-basket-shopping"></i><span class="badge" id="cart-count">0</span></div>
+        </div>
+    </nav>
+
+    <div class="carousel-section"><div class="section-title">WHAT'S ON YOUR MIND?</div><div class="row-scroll"><div class="cat-item" onclick="filterMenu('all')"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100" class="cat-img"><span class="cat-name">All</span></div><div class="cat-item" onclick="filterMenu('biryani')"><img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=100" class="cat-img"><span class="cat-name">Biryani</span></div><div class="cat-item" onclick="filterMenu('pizza')"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=100" class="cat-img"><span class="cat-name">Pizza</span></div><div class="cat-item" onclick="filterMenu('burger')"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=100" class="cat-img"><span class="cat-name">Burger</span></div><div class="cat-item" onclick="filterMenu('dessert')"><img src="https://images.unsplash.com/photo-1589119908995-c6837fa14848?w=100" class="cat-img"><span class="cat-name">Dessert</span></div></div></div>
+    <div class="carousel-section"><div class="section-title">TOP BRANDS</div><div class="row-scroll" id="restaurant-row"></div></div>
+
+    <div class="gold-banner" id="gold-banner"><div class="gold-text"><h3>NeuroGold</h3><p style="color:var(--text-muted); font-size:0.8rem;">Free Delivery & 15% Extra Off</p></div><button class="gold-btn" onclick="toggleGold()">JOIN NOW</button></div>
+
+    <div class="search-container"><button class="voice-btn" onclick="startVoice()"><i class="fa-solid fa-microphone"></i></button><input type="text" id="search-input" placeholder="Search for food, restaurants..."></div>
+    <div class="menu-header"><span class="menu-title-text" id="menu-title">Explore Food</span><div class="back-btn" id="back-home-btn" onclick="resetToHome()"><i class="fa-solid fa-arrow-left"></i> Back to All</div></div>
+    <div class="menu-grid" id="menu-grid"></div>
+
+    <div class="sidebar" id="cart-sidebar">
+        <div style="border-bottom:1px solid var(--border); padding-bottom:10px; display:flex; justify-content:space-between;"><h2 class="font-tech">Your Cart</h2><i class="fa-solid fa-xmark" onclick="toggleCart()" style="cursor:pointer;"></i></div>
+        <div class="cal-meter-box"><div class="cal-header"><span>Calorie Intake</span><span id="cal-count">0 / 2000 kcal</span></div><div class="cal-bar-bg"><div class="cal-bar-fill" id="cal-bar"></div></div></div>
+        <div class="schedule-box"><select class="schedule-select"><option value="now">⚡ Instant Delivery</option><option value="1hr">🕐 Schedule 1 Hr</option><option value="dinner">🌙 Schedule Dinner</option></select></div>
+        <div id="cart-items" style="flex:1; overflow-y:auto; margin-top:10px;"></div>
+        <div class="cart-extras" id="cart-extras" style="display:none;">
+            <small style="color:var(--text-muted);">Tip your Pilot</small>
+            <div class="tip-options"><button class="tip-btn" onclick="addTip(20)">₹20</button><button class="tip-btn" onclick="addTip(50)">₹50</button><button class="tip-btn" onclick="addTip(100)">₹100</button></div>
+            <button class="split-btn" onclick="splitBill()"><i class="fa-solid fa-calculator"></i> Split Bill</button>
+            <button class="group-btn" onclick="startGroupOrder()"><i class="fa-solid fa-users"></i> Start Group Order</button>
+        </div>
+        <div class="bill-details">
+            <div class="bill-row"><span>Item Total</span><span id="bill-item-total">₹0</span></div>
+            <div class="bill-row"><span>Taxes (5%)</span><span id="bill-tax">₹0</span></div>
+            <div class="bill-row"><span>Delivery Fee</span><span id="bill-delivery">₹40</span></div>
+            <div class="bill-row" id="rain-row" style="display:none; color:var(--primary);"><span>Surge (Rain)</span><span>+₹30</span></div>
+            <div class="bill-row" id="tip-row" style="display:none; color:var(--primary);"><span>Tip</span><span id="bill-tip">₹0</span></div>
+            <div class="bill-row" id="gold-row" style="display:none; color:#FFD700;"><span>NeuroGold Savings</span><span>-₹60</span></div>
+            <div class="grand-total"><div class="bill-row"><span>TO PAY</span><span id="bill-final">₹0</span></div></div>
+            <button class="btn-primary" onclick="openAddressModal()">SELECT ADDRESS</button>
+        </div>
+    </div>
+
+    <div class="sidebar" id="wish-sidebar"><div style="border-bottom:1px solid var(--border); padding-bottom:10px; display:flex; justify-content:space-between;"><h2 class="font-tech" style="color:#ff0055;">Wishlist</h2><i class="fa-solid fa-xmark" onclick="toggleWishlist()" style="cursor:pointer;"></i></div><div id="wish-items" style="flex:1; overflow-y:auto;"></div></div>
+
+    <div class="modal-overlay" id="cust-modal"><div class="modal-box"><span class="close-btn" onclick="closeModal('cust-modal')">×</span><h2 class="font-tech" id="cust-item-name">Customize Item</h2><div style="margin-top:20px;" id="cust-content"><div class="cust-group"><div class="cust-title">Select Size</div><label class="cust-option selected" onclick="selectSize(this, 0)"><input type="radio" name="size" class="cust-input" checked> <span>Regular</span> <span>+₹0</span></label><label class="cust-option" onclick="selectSize(this, 50)"><input type="radio" name="size" class="cust-input"> <span>Large</span> <span>+₹50</span></label></div><div class="cust-group"><div class="cust-title">Add-ons</div><label class="cust-option" onclick="toggleAddon(this, 30)"><input type="checkbox" class="cust-input"> <span>Extra Cheese</span> <span>+₹30</span></label><label class="cust-option" onclick="toggleAddon(this, 40)"><input type="checkbox" class="cust-input"> <span>Pepsi</span> <span>+₹40</span></label></div></div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px; font-weight:bold;"><span>Total: <span id="cust-total-price">₹0</span></span><button class="btn-primary" onclick="confirmCustomization()" style="width:auto; margin:0;">ADD ITEM</button></div></div></div>
+    <div class="modal-overlay" id="addr-modal"><div class="modal-box"><span class="close-btn" onclick="closeModal('addr-modal')">×</span><h2 class="font-tech">Select Address</h2><div style="margin-top:20px;"><div class="addr-card selected" onclick="selectAddr(this)"><div class="addr-icon"><i class="fa-solid fa-house"></i></div><div><b>Home</b><br><small style="color:var(--text-muted);">123, Cyber Lane, Sector 7</small></div></div><div class="addr-card" onclick="detectLocation(this)"><div class="addr-icon"><i class="fa-solid fa-location-crosshairs"></i></div><div><b>Detect GPS</b><br><small style="color:var(--text-muted);" id="gps-status">Tap to locate</small></div></div></div><button class="btn-primary" onclick="proceedToPayment()">PROCEED TO PAY</button></div></div>
+    <div class="modal-overlay" id="history-modal"><div class="modal-box"><span class="close-btn" onclick="closeModal('history-modal')">×</span><h2 class="font-tech">Order History</h2><div id="history-list" style="margin-top:20px; max-height:300px; overflow-y:auto;"></div></div></div>
+    <div class="modal-overlay" id="tracker-modal"><div class="modal-box" style="max-width:600px;"><div id="delivery-map"></div><h3 class="font-tech" style="color:var(--primary);">Arriving in <span id="eta">15</span> mins</h3><button onclick="closeModal('tracker-modal')" style="margin-top:15px; background:none; border:none; color:var(--text-muted); cursor:pointer;">Close</button></div></div>
+    <div class="modal-overlay" id="review-modal"><div class="modal-box"><span class="close-btn" onclick="closeModal('review-modal')">×</span><h2 class="font-tech" id="rev-title">Reviews</h2><div id="rev-list" style="margin-top:20px;"></div></div></div>
+    <div class="modal-overlay" id="spin-modal"><div class="modal-box" style="text-align:center; background: #222;"><span class="close-btn" onclick="closeModal('spin-modal')">×</span><h2 class="font-cyber" style="color:#fff; margin-bottom:20px;">Daily Spin</h2><div class="wheel-container" id="wheel"><div class="wheel-pointer"></div><div class="spin-center">WIN</div></div><button class="btn-primary" onclick="spinWheel()" id="spin-btn" style="background:#ff0055; color:white; margin-top:30px;">SPIN NOW</button><p id="spin-result" style="margin-top:15px; color:#fff; font-weight:bold;"></p></div></div>
+
+    <div class="spin-fab" onclick="openSpin()" title="Spin & Win!"><i class="fa-solid fa-dharmachakra"></i></div>
+    <div class="fab" onclick="toggleAI()"><i class="fa-solid fa-robot"></i></div>
+    <div class="chat-win" id="ai-chat"><div style="padding:15px; background:var(--primary); color:#000; font-weight:bold; display:flex; justify-content:space-between;"><span>The Oracle</span><i class="fa-solid fa-xmark" onclick="toggleAI()"></i></div><div style="flex:1; padding:10px; color:var(--text-main);">Hello! I'm your food assistant.</div></div>
+
+    <footer><div class="footer-content"><div class="footer-col" style="flex:1; min-width:200px;"><div class="logo font-cyber" style="margin-bottom:15px; color:#fff;"><i class="fa-solid fa-infinity" style="color:var(--primary);"></i> NeuroNosh</div><p>Reimagining dining through cyber-innovation.</p></div><div class="footer-col"><h4>COMPANY</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li></ul></div><div class="footer-col"><h4>LEGAL</h4><ul><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div><div class="footer-col"><h4>SOCIAL</h4><ul><li><a href="#">Twitter</a></li><li><a href="#">Instagram</a></li></ul></div></div><div class="copyright">© 2025 NeuroNosh Technologies. All rights reserved.</div></footer>
+
+    <div id="toast">Alert</div>
+
+    <script>
+        // --- DATA ---
+        const menu = [
+            { id: 1, name: "Hyderabadi Biryani", res: "Royal Kitchens", rating: 4.5, cat: "biryani", price: 350, veg: false, cust: true, cal: 600, img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500", reviews: [{user:"Sam", txt:"Spicy!", stars:5}] },
+            { id: 2, name: "Paneer Tikka Pizza", res: "Pizza Hub", rating: 4.2, cat: "pizza", price: 420, veg: true, cust: true, cal: 800, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500", reviews: [{user:"Ali", txt:"Great crust", stars:5}] },
+            { id: 3, name: "Double Cheese Burger", res: "Burger Point", rating: 4.0, cat: "burger", price: 220, veg: false, cust: true, cal: 550, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500", reviews: [] },
+            { id: 4, name: "Gulab Jamun", res: "Sweet Truth", rating: 4.8, cat: "dessert", price: 120, veg: true, cust: false, cal: 300, img: "https://images.unsplash.com/photo-1589119908995-c6837fa14848?w=500", reviews: [] },
+            { id: 5, name: "Blue Lagoon", res: "Cool Sips", rating: 3.9, cat: "drink", price: 150, veg: true, cust: false, cal: 150, img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500", reviews: [] },
+            { id: 6, name: "Zinger Wing", res: "KFC (Cyber)", rating: 4.6, cat: "burger", price: 300, veg: false, cust: true, cal: 450, img: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=500", reviews: [] }
+        ];
+
+        let cart = [], wishlist = [], history = JSON.parse(localStorage.getItem('nn_history')) || [];
+        let isGold = false, deliveryFee = 40, tipAmount = 0, isRaining = false;
+        let map, driverMarker, userLat = 12.9716, userLng = 77.5946; 
+        let currentRestaurant = null, pendingItem = null, currentSizePrice = 0, currentAddonPrice = 0;
+
+        window.onload = () => {
+            setTimeout(() => document.getElementById('preloader').style.display = 'none', 1000);
+            if(localStorage.getItem('nn_theme') === 'light') toggleTheme(true);
+            renderRestaurants(); renderMenu(menu); startCountdown(); initTicker(); speak("Welcome to Neuro Nosh.");
+            initRain();
+        };
+
+        // --- REAL NAME TICKER ---
+        function initTicker() {
+            const names = ["Aarav", "Priya", "Rahul", "Sneha", "Vikram", "Ananya", "Rohit", "Ishita", "Kabir", "Meera"];
+            const actions = ["ordered Biryani", "grabbed a Burger", "is eating Pizza", "sipping Blue Tonic", "redeemed a coupon", "joined Gold"];
+            const t = document.getElementById('buzz-content');
+            let c = "";
+            for(let i=0; i<names.length; i++) {
+                const name = names[Math.floor(Math.random() * names.length)];
+                const action = actions[Math.floor(Math.random() * actions.length)];
+                c += `<span class="buzz-item"><b>${name}</b> ${action}</span>`;
+            }
+            t.innerHTML = c;
+        }
+
+        // --- LOGIC ---
+        function speak(text) { if('speechSynthesis' in window) { const u = new SpeechSynthesisUtterance(text); window.speechSynthesis.speak(u); } }
+        function initRain() { const cont = document.getElementById('rain-effect'); for(let i=0; i<50; i++) { const drop = document.createElement('div'); drop.className = 'drop'; drop.style.left = Math.random() * 100 + '%'; drop.style.animationDuration = Math.random() * 0.5 + 0.5 + 's'; drop.style.animationDelay = Math.random() * 2 + 's'; cont.appendChild(drop); } }
+        function toggleRain() { isRaining = !isRaining; document.getElementById('rain-effect').classList.toggle('active'); const icon = document.getElementById('rain-icon'); if(isRaining) { icon.style.color = "#00d2ff"; showToast("🌧️ Heavy Rain! Surge Pricing Active."); } else { icon.style.color = "inherit"; showToast("☀️ Weather Clear. Standard Pricing."); } updateCartUI(); }
+        function startGroupOrder() { const code = "NN-" + Math.random().toString(36).substr(2, 6).toUpperCase(); navigator.clipboard.writeText(`Join my group order on NeuroNosh! Code: ${code}`); alert(`Group Link Copied: ${code}\nShare this with friends!`); }
+        function openHistory() { const list = document.getElementById('history-list'); if(history.length === 0) list.innerHTML = "<p style='text-align:center; color:#555;'>No past orders.</p>"; else { list.innerHTML = history.map(h => `<div class="history-item"><div class="hist-header"><span>${h.items} Items</span><span>₹${h.total}</span></div><div class="hist-meta">${h.date}</div></div>`).join(''); } document.getElementById('history-modal').classList.add('active'); }
+        function startCountdown() { let t = 300, el = document.getElementById('flash-timer'); setInterval(() => { let m = Math.floor(t/60), s = t%60; el.innerText = `0${m}:${s<10?'0'+s:s}`; if(t>0)t--; }, 1000); }
+        function toggleNotifs() { document.getElementById('notif-box').classList.toggle('show'); }
+        function toggleTheme(f=false) { const b = document.body, i = document.getElementById('theme-icon'); if (f||!b.classList.contains('light-mode')) { b.classList.add('light-mode'); i.className="fa-solid fa-moon"; localStorage.setItem('nn_theme', 'light'); } else { b.classList.remove('light-mode'); i.className="fa-solid fa-sun"; localStorage.setItem('nn_theme', 'dark'); } }
+        function renderRestaurants() { const c = document.getElementById('restaurant-row'); c.innerHTML = [...new Set(menu.map(i=>i.res))].map(r=>`<div class="res-card" onclick="openRestaurant('${r}')"><img src="${menu.find(i=>i.res===r).img}" class="res-card-bg"><div class="res-overlay"><div class="res-logo-text">${r}</div></div></div>`).join(''); }
+        function openRestaurant(n) { currentRestaurant=n; document.getElementById('menu-title').innerText=`Menu: ${n}`; document.getElementById('back-home-btn').style.display='block'; renderMenu(menu.filter(i=>i.res===n)); window.scrollTo({top:300,behavior:'smooth'}); }
+        function resetToHome() { currentRestaurant=null; document.getElementById('menu-title').innerText="Explore Food"; document.getElementById('back-home-btn').style.display='none'; renderMenu(menu); }
+        function detectLocation(el) { document.getElementById('gps-status').innerText="Locating..."; selectAddr(el); if(navigator.geolocation) navigator.geolocation.getCurrentPosition(p=>{ userLat=p.coords.latitude; userLng=p.coords.longitude; document.getElementById('gps-status').innerText="Found!"; showToast("GPS Locked"); },()=>{}); }
+        function selectAddr(el) { document.querySelectorAll('.addr-card').forEach(c=>c.classList.remove('selected')); el.classList.add('selected'); }
+        function renderMenu(items) { document.getElementById('menu-grid').innerHTML = items.map(i => `<div class="card"><div class="card-img-wrap"><img src="${i.img}" class="card-img"></div><div class="card-body"><div class="res-info"><span class="res-name">${i.res}</span><span class="res-rating">${i.rating} ★</span></div><div class="card-header"><h3 class="font-tech">${i.name}</h3></div><div class="price-row"><span>₹${i.price}</span><button class="add-btn" onclick="initiateAdd(${i.id})">ADD</button></div></div></div>`).join(''); }
+        function filterMenu(cat) { resetToHome(); cat==='all'?renderMenu(menu):renderMenu(menu.filter(i=>i.cat===cat)); }
+        
+        // Customization
+        function initiateAdd(id) { const item = menu.find(i=>i.id===id); if(item.cust) { pendingItem=item; currentSizePrice=0; currentAddonPrice=0; document.getElementById('cust-modal').classList.add('active'); updateCustTotal(); } else addToCart(item,0,""); }
+        function selectSize(el,p) { document.querySelectorAll('input[name="size"]').forEach(i=>i.parentElement.classList.remove('selected')); el.classList.add('selected'); el.querySelector('input').checked=true; currentSizePrice=p; updateCustTotal(); }
+        function toggleAddon(el,p) { const c=el.querySelector('input'); c.checked=!c.checked; el.classList.toggle('selected'); if(c.checked)currentAddonPrice+=p; else currentAddonPrice-=p; updateCustTotal(); }
+        function updateCustTotal() { document.getElementById('cust-total-price').innerText="₹"+(pendingItem.price+currentSizePrice+currentAddonPrice); }
+        function confirmCustomization() { addToCart(pendingItem, currentSizePrice+currentAddonPrice, "Custom"); closeModal('cust-modal'); }
+
+        // Cart
+        function addToCart(item, ext, note) { const id=item.id+note; let ex=cart.find(i=>i.cartId===id); if(ex)ex.qty++; else cart.push({...item, cartId:id, qty:1, finalPrice:item.price+ext, note:note}); updateCartUI(); showToast("Added"); speak("Item Added"); }
+        function removeFromCart(id) { cart=cart.filter(i=>i.cartId!==id); updateCartUI(); }
+        function addTip(a) { tipAmount=a; updateCartUI(); }
+        function splitBill() { const t = parseFloat(document.getElementById('bill-final').innerText.replace('₹','')); const p=prompt("People?"); if(p)alert("Per person: ₹"+(t/p).toFixed(0)); }
+        
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText=cart.reduce((a,b)=>a+b.qty,0);
+            document.getElementById('cart-items').innerHTML=cart.map(i=>`<div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span>${i.name} (${i.qty}x)</span><span style="color:red; cursor:pointer;" onclick="removeFromCart('${i.cartId}')">×</span></div>`).join('');
+            document.getElementById('cart-extras').style.display=cart.length>0?"block":"none";
+            
+            let itemTotal=cart.reduce((a,b)=>a+(b.finalPrice*b.qty),0);
+            let rainFee = isRaining ? 30 : 0; 
+            let finalDelivery = isGold ? 0 : deliveryFee;
+            let total = itemTotal + (itemTotal*0.05) + finalDelivery + rainFee + tipAmount - (isGold?itemTotal*0.15:0);
+            
+            document.getElementById('bill-item-total').innerText="₹"+itemTotal;
+            document.getElementById('rain-row').style.display=isRaining?"flex":"none";
+            document.getElementById('bill-final').innerText="₹"+Math.max(0, total.toFixed(0));
+            
+            let cal = cart.reduce((a,b)=>a+(b.cal*b.qty),0);
+            document.getElementById('cal-count').innerText=`${cal} / 2000 kcal`;
+            document.getElementById('cal-bar').style.width=Math.min(100, (cal/2000)*100)+"%";
+        }
+        function toggleGold() { isGold=!isGold; updateCartUI(); showToast(isGold?"Gold Active":"Cancelled"); }
+
+        // Checkout
+        function openAddressModal() { if(cart.length) { toggleCart(); document.getElementById('addr-modal').classList.add('active'); } else showToast("Cart Empty"); }
+        function proceedToPayment() { 
+            closeModal('addr-modal'); 
+            setTimeout(() => { 
+                showToast("Payment Success!"); 
+                history.unshift({items: cart.length, total: document.getElementById('bill-final').innerText, date: new Date().toLocaleDateString()});
+                localStorage.setItem('nn_history', JSON.stringify(history));
+                cart=[]; updateCartUI(); openTracker(); 
+            }, 1000); 
+        }
+        
+        function initMap() { if(map)map.remove(); map=L.map('delivery-map').setView([userLat,userLng],14); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map); L.marker([userLat,userLng]).addTo(map); }
+        function openTracker() { document.getElementById('tracker-modal').classList.add('active'); setTimeout(initMap,100); }
+
+        function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('open'); }
+        function toggleWishlist() { document.getElementById('wish-sidebar').classList.toggle('open'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+        function toggleAI() { document.getElementById('ai-chat').classList.toggle('open'); }
+        function showToast(m) { const t=document.getElementById('toast'); t.innerText=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3000); }
+        function startVoice() { showToast("Listening..."); }
+        function openSpin() { document.getElementById('spin-modal').classList.add('active'); }
+        function spinWheel() { const w=document.getElementById('wheel'); w.style.transform=`rotate(${Math.random()*5000}deg)`; setTimeout(()=>{document.getElementById('spin-result').innerText="WON COUPON!"; showToast("Won!");},4000); }
+        function openReviews(id) { document.getElementById('review-modal').classList.add('active'); }
+    </script>
+</body>
+</html>
