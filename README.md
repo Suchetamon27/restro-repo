@@ -1,7 +1,7 @@
 # 🚀 NeuroNosh - The Future of Dining
 
 ![Project Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![Version](https://img.shields.io/badge/Version-v16.1-blue)
+![Version](https://img.shields.io/badge/Version-blue)
 ![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-orange)
 ![License](https://img.shields.io/badge/License-MIT-purple)
 
