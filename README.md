@@ -16,6 +16,12 @@
 
 ---
 
+## Live Project Link:
+
+https://suchetamon27.github.io/restro-repo/
+
+---
+
 ## 🌟 Introduction
 
 **NeuroNosh** is a cutting-edge, single-file web application that simulates a futuristic food delivery ecosystem. It combines the utility of modern aggregators with immersive cyber-aesthetics and advanced front-end logic. 
