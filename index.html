@@ -421,7 +421,7 @@
         function startVoice() { showToast("Listening..."); }
         function openSpin() { document.getElementById('spin-modal').classList.add('active'); }
         function spinWheel() { const w=document.getElementById('wheel'); w.style.transform=`rotate(${Math.random()*5000}deg)`; setTimeout(()=>{document.getElementById('spin-result').innerText="WON COUPON!"; showToast("Won!");},4000); }
-        function openReviews(id) { document.getElementById('review-modal').classList.add('active'); }
+        function openReviews(id) { document.getElementById('review-modal').classList.add('active'); } 
     </script>
 </body>
 </html>
